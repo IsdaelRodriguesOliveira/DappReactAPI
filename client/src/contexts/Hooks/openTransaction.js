@@ -37,13 +37,11 @@ const Transaction = (currentAccount, contract) => {
                 value: Web3.utils.toWei(valor, "ether"),
             });
             console.log(retorno)
-            const adress = JSON.stringify(currentAccount)
-            console.log(adress)
             let url = 'http://localhost:3333/payments';
             let options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: '{"address":"0x64827b53aa36cebe55100d38b2a1a63ab8e26e51"}'
+                body: JSON.stringify({"address":currentAccount})
             };
               
             fetch(url, options)
