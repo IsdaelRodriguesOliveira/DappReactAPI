@@ -24,16 +24,18 @@ contract Payment_validation{
     //rede das transacoes em espera
     mapping(address => Usurario_espera) rede_de_espera;
 
-    function deposit(uint256 _valor_esperado) external payable returns(string memory _resultado){
+    function deposit(uint256 _valor_esperado, uint _numero_boleto) external payable returns(string memory _resultado){
         require(rede_de_espera[msg.sender].estado_pagamento == false && _valor_esperado == msg.value, "Pagamento nao realizado");
         rede_de_espera[msg.sender].valor_recebido = msg.value;
         rede_de_espera[msg.sender].estado_pagamento = true;
+        rede_de_espera[msg.sender].numero_boleto = _numero_boleto;
         _resultado = "Pagamento realizado";
     }
-    function deposit2(uint256 _valor_esperado) external payable returns(string memory _resultado){
+    function deposit2(uint256 _valor_esperado, uint _numero_boleto) external payable returns(string memory _resultado){
         require( _valor_esperado == msg.value, "Pagamento nao realizado");
         rede_de_espera[msg.sender].valor_recebido = msg.value;
         rede_de_espera[msg.sender].estado_pagamento = true;
+        rede_de_espera[msg.sender].numero_boleto = _numero_boleto;
         _resultado = "Pagamento realizado";
     }
     function deposit3() external payable returns(string memory _resultado){
