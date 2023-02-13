@@ -32,7 +32,7 @@ const Transaction = (currentAccount, contract) => {
         let retorno = ""
         console.log("Valor de envio",valor)
         try{
-            retorno = await contract.methods.deposit2(Web3.utils.toWei(valor, "ether")).send({
+            retorno = await contract.methods.deposit2(Web3.utils.toWei(valor, "ether"), code).send({
                 from: currentAccount,
                 value: Web3.utils.toWei(valor, "ether"),
             });
@@ -46,7 +46,9 @@ const Transaction = (currentAccount, contract) => {
               
             fetch(url, options)
             .then(res => res.json())
-            .then(json => console.log(json))
+            .then(json => {console.log(json)
+                alert("Pagamento realizado")
+            })
             .catch(err => console.error('error:' + err));
 
         } catch (error){
