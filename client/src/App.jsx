@@ -31,18 +31,14 @@ function App() {
   return (
     <div id="App" >
       <div className="container">
+        
+        
         <hr />
-        <p>Contrato:</p>
-        <p>{saldo} Ethers</p>
-        <p>
-          <button onClick={OpenTransaction}>Adicionar um boleto na lista de espera</button>
-        </p>
-        <hr />
-        <p>Valor em espera {valorData}</p>
-        <button onClick={ async () =>{ valorData = await CkeckTransaction()
-        console.log(valorData)}}>Verificar se existe uma transação em espera  {valorData}</button>
-        <hr />
+        
         <p>Cliente</p>
+        <p>
+          <button onClick={connectMetaMesk}>Connect Wallet</button>
+        </p>
         <p>Digite o numero do boleto</p>
         <p>
         <input
@@ -61,12 +57,13 @@ function App() {
           required
         />
         </p>
-        <p>
-          <button onClick={connectMetaMesk}>Connect Wallet</button>
-        </p>
+        
         <p>
           <button onClick={submitt}>Depositar valor no contrato</button>
         </p>
+        <hr />
+        <p>Contrato:</p>
+        <p>{saldo} Ethers</p>
         <hr />
       </div>
     </div>
